@@ -37,16 +37,23 @@ int fibonacciIterative(int n){
         b=c;
     }
     return b;
-
-
 }
+
+int fibonacciRecursive(int n){
+    if(n<=2){
+        return 1;
+    }
+    return fibonacciRecursive(n-1)+fibonacciRecursive(n-2);
+}
+
 
 
 int main(){
     cout<<"La suma iterativa de 5 es: "<<sumIterative(5)<<endl; 
     cout<<"La suma recursica de 5 es: "<<sumRecursive(5)<<endl;
     cout<<"La suma con formula de 5 es: "<<sumFormula(5)<<endl;
-    cout<<"La secuencia fibonacci de 5 es: "<<fibonacciIterative(5)<<endl;
+    cout<<"La secuencia fibonacci iterativa de 5 es: "<<fibonacciIterative(5)<<endl;
+    cout<<"La secuencia fibonacci recursiva de 5 es: "<<fibonacciRecursive(5)<<endl;
     return 0;
    
 }
