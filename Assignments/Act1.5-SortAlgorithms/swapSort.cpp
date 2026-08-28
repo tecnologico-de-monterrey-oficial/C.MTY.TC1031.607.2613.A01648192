@@ -43,4 +43,4 @@ int main(){
     return 0;
 }
 //primer loop para hacer swap, segundo para checar el menor
-//15, 7, 3, 9, 12, 5, 2
+//15, 7, 3, 9, 12, 5, 2 
