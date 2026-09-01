@@ -1,0 +1,1 @@
+Lo que más me tardó, sin duda el segundo código, llamado searchString.cpp. Consulté stackOverflow para lo que no reconocía en bibliotecas, pero no lo sentí muy difícil por mi previo maestro que no enseó sobre el tema. Me abstuve de consultar ese código directamente pero sí recordaba.
