@@ -24,6 +24,33 @@ void bubbleS(vector<T> &list){
         }
     }
 }
+/*
+template <typename T>
+void insertS(vector<T> &list){
+    for (){
+        for(){
+            if (){
+            
+            }
+        }
+    }
+}*/
+
+template <typename T>
+void insertS(vector<T> &list){
+    for (int i=0;i<(list.size());i++){
+        int j=i+1;
+        int base=list[i];
+
+        while(j>=1 && (list[j]>list[i])){
+            list[j+1]=list[j];
+            j-=j;
+            }
+
+        list[j+1]=base;
+    }
+}
+
 
 template <typename T>
 void printVec(vector<T> &list){
@@ -33,13 +60,18 @@ void printVec(vector<T> &list){
 }
 
 int main(){
-    vector<int> myList1={15, 7, 3, 9, 12, 5, 2};
+    /*vector<int> myList1={15, 7, 3, 9, 12, 5, 2};
     swapS(myList1);
 
     vector<int> myList2={15, 7, 3, 9, 12, 5, 2};
-    bubbleS(myList2);
-    printVec(myList1);
-    printVec(myList2);
+    bubbleS(myList2);*/
+
+    vector<int> myList3={15, 7, 3, 9, 12, 5, 2};
+    insertS(myList3);
+
+    /*printVec(myList1);
+    printVec(myList2);*/
+    printVec(myList3);
     return 0;
 }
 //primer loop para hacer swap, segundo para checar el menor
