@@ -56,15 +56,15 @@ void insertS(vector<T> &list){
 template <typename T>
 int splitQS(vector<T> &list, int start, int end){
     int pivot= list[end];
-    int i = start- 1;
+    int aux = start- 1;
     for(int j=start; j<=(end-1); j++){
         if(pivot>list[j]){
-            i++;
-            swap(list[i],list[j]);
+            aux++;
+            swap(list[aux],list[j]);
         }
     }
-    swap(list[i+1], list[end]);
-    return i+1;
+    swap(list[aux+1], list[end]);
+    return aux+1;
 }
 
 template <typename T>
