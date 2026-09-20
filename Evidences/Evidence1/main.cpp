@@ -150,6 +150,44 @@ int main(){
 
         saveLogs(logsSortear);
 
+        //rangos con binary search
+
+        //Busqué en google sobre cómo buscar solo la mitad del string
+        //me salió el pop-up de IA de Google que me dio la idea, entonces acredito la idea a Gemini
+        string startDate;
+        string endDate;
+        cout<<"\nBusqueda por rango"<<endl;
+        cout<<"Ingresa la fecha y hora de incio. formato ejemplo: Sep 29 2025 10:00:00"<<endl;
+        getline(cin, startDate);
+
+        cout<<"Ingresa la fecha y hora de fin. formato ejemplo: Sep 29 2025 10:00:00 "<<endl;
+        getline(cin, endDate);
+
+        //he aqui la idea que me dio gemini:
+        Logs startLog(startDate+" 0.0.0.0 A");
+        Logs endLog(endDate+" 999.999.999.999 Z");
+
+        ofstream rangeFile("range607.txt");
+        int encontrados= 0;
+        cout<<"\nRegistros encontrados: "<<endl;
+        for(int i= 0; i<logsSortear.size(); i++){
+            if(logsSortear[i] > startLog && logsSortear[i] < endLog){
+                cout<<logsSortear[i]<<endl;
+                rangeFile<<logsSortear[i]<<endl;
+                encontrados++;   
+        }
+        if (logsSortear[i]>endLog){
+            break;
+        }
+        
+        if(encontrados>0){
+            cout<<"\n"<<encontrados<<" logs encontrados dentro del rango."<<endl;
+        }else{
+            cout<<"No se encontraron logs en el rengo"<<endl;
+            rangeFile<<"No se encontraron logs en el rango"<<endl;
+        }
+        rangeFile.close();
+
         //repetir?
         int respuesta= 0;
         opcionValida= false;
@@ -179,4 +217,3 @@ int main(){
 }
 
 //no me queda completamente claro lo de comparar?
-//falta toda la parte de rangos
