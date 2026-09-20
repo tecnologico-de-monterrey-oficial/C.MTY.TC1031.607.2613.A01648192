@@ -23,6 +23,7 @@ class Logs{
         bool operator<(const Logs& other) const;
         bool operator>(const Logs& other) const;
         bool operator<=(const Logs& other) const;
+        bool operator==(const Logs& other) const;
         friend std::ostream& operator<<(std::ostream& os, const Logs& log);
 };
 

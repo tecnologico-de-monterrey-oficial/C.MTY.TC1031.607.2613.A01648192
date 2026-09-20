@@ -7,6 +7,31 @@
 #include "Sorts.h"
 using namespace std;
 
+int binarySearch(const vector<Logs>& list, const Logs& seek){
+    int left= 0;
+    int right= list.size()-1;
+    int closest= left;
+
+    while(left<=right){
+        int mid= left+ (right - left)/2;
+
+        if(list[mid]==seek){
+            return mid; //fecha exacta
+        }else if(list[mid]<seek){
+            left= mid+1;
+            closest= left;//por si no existe
+        }else{
+            right= mid - 1;
+            closest= mid;
+        }
+    }
+    if(closest>= list.size()){
+        return list.size()-1;
+    }
+    return closest;
+}
+
+
 void dataLogs(vector<Logs>& logs, const string& archivo){
     logs.clear();//sugerencia de gemini para que el vector no duplique los datos en reruns
     ifstream file(archivo);
@@ -156,7 +181,7 @@ int main(){
         //me salió el pop-up de IA de Google que me dio la idea, entonces acredito la idea a Gemini
         string startDate;
         string endDate;
-        cout<<"\nBusqueda por rango"<<endl;
+        cout<<"\nBusqueda por rango"<<endl;//binary search
         cout<<"Ingresa la fecha y hora de incio. formato ejemplo: Sep 29 2025 10:00:00"<<endl;
         getline(cin, startDate);
 
@@ -167,21 +192,30 @@ int main(){
         Logs startLog(startDate+" 0.0.0.0 A");
         Logs endLog(endDate+" 999.999.999.999 Z");
 
+        int startIndex= binarySearch(logsSortear, startLog);
+
+        //buscar a los lados
+        while (startIndex>0 && logsSortear[startIndex - 1]==logsSortear[startIndex]){
+            startIndex--;
+        }
+
         ofstream rangeFile("range607.txt");
-        int encontrados= 0;
+        int count= 0;
+        int encontrado= false;
         cout<<"\nRegistros encontrados: "<<endl;
-        for(int i= 0; i<logsSortear.size(); i++){
-            if(logsSortear[i] > startLog && logsSortear[i] < endLog){
+        for(int i= startIndex; i<logsSortear.size(); i++){
+            if(logsSortear[i] >  endLog){
+                break;
+            }
+            if(!(logsSortear[i]< startLog)){
                 cout<<logsSortear[i]<<endl;
                 rangeFile<<logsSortear[i]<<endl;
-                encontrados++;   
+                count++;   
+                encontrado= true;
+            }
         }
-        if (logsSortear[i]>endLog){
-            break;
-        }
-        
-        if(encontrados>0){
-            cout<<"\n"<<encontrados<<" logs encontrados dentro del rango."<<endl;
+        if (encontrado){
+            cout<<"\n"<<count<<" logs encontrados dentro del rango."<<endl;
         }else{
             cout<<"No se encontraron logs en el rengo"<<endl;
             rangeFile<<"No se encontraron logs en el rango"<<endl;

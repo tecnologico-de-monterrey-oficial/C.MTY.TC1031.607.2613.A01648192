@@ -81,6 +81,15 @@ bool Logs::operator<=(const Logs& other) const{
     return!(*this>other);
 }
 
+//esta lit solo es para lo de range entonces no puse nada del IP
+bool Logs::operator==(const Logs& other) const{
+    if (this->year != other.year) return false;
+    if (this->month != other.month) return false;
+    if (this->day != other.day) return false;
+    if (this->time != other.time) return false;
+    return true;
+}
+
 ostream& operator<<(ostream& os, const Logs& log){
     os<<log.raw;
     return os;
