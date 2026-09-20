@@ -17,7 +17,7 @@ class Logs{
         Logs();
         Logs(std::string line);
         int mesToInt(const std::string& m);
-        std::string padIP(const std::string& ip);
+        std::string padIPfunc(const std::string& ip);
 
         //sobreescribir
         bool operator<(const Logs& other) const;
