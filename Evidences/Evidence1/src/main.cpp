@@ -97,17 +97,25 @@ int main(){
             try{
                 cout<<"\nElige uno para ordenar los logs"<<endl;
                 cout<<"1. Swap Sort\n2. Bubble Sort\n3. Selection Sort\n4. Insertion Sort" << endl;
-                cout<<"5. Merge Sort\n6. Quick Sort\n7. Shell Sort\n9. Salir"<<endl;
+                cout<<"5. Merge Sort\n6. Quick Sort\n7. Shell Sort\n8. Salir"<<endl;
                 cin>>opcionAlgo;
-                opcionValida= true;
+                if (opcionAlgo>=1 && opcionAlgo<=8){
+                    opcionValida=true;
+                }else{
+                    cout<<"opcion no valida, elige de 1 al 8."<<endl;
+                }
             }catch(ios_base::failure& ex){
-                cout<<"Error. Elige del 1 al 9"<<endl;
+                cout<<"Error. Elige del 1 al 8"<<endl;
                 cin.clear();
                 cin.ignore(1000, '\n');
             }
         }while (!opcionValida);
         cin.ignore(1000, '\n'); //otra sugerencia de Gemini, para limpiar la basura del buffer en preparacion a los siguientes inputs
         
+        if (opcionAlgo==8){
+            break;
+        }
+
         //siguiente menu, predicciones de usuario
         string prediccion;
         cout<<"Que tan rapido esperas que sea el sorting con las opciones elegidas?"<<endl;
@@ -188,7 +196,7 @@ int main(){
         getline(cin, endDate);
 
         //he aqui la idea que me dio gemini:
-        Logs startLog(startDate+" 0.0.0.0 A");
+        Logs startLog(startDate+" 000.000.000.000 A");
         Logs endLog(endDate+" 999.999.999.999 Z");
 
         int startIndex= binarySearch(logsSortear, startLog);
