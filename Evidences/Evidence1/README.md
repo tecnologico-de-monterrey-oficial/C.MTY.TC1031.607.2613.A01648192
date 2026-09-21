@@ -1,3 +1,25 @@
+link del video:
+https://youtu.be/G2YP2pZs7oE
+
+para compilar:
+g++ src/main.cpp src/Logs.cpp -I include -o build/proyecto
+
+windows:
+.\build\proyecto.exe
+
+MacOs:
+./build/proyecto
+
+formator de fecha:
+Mes Día Año Hora:Minuto:Segundo
+
+ejemplo:
+Sep 29 2025 14:37:38
+
+No ocupé Copilot en visual studio code, pero especifiqué mucho más el uso en el documento de reflexión
+
+
+
 Brainstorm:
 Tiene que haber un script para darle valor a cada dato y otro para sort. Posiblemente, un archivo para cada sort si queremos ser ordenados, pero no es necesario. ¿Qué diría Salinas?
 
