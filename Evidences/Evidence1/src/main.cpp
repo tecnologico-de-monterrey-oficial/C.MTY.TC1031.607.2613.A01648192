@@ -50,7 +50,7 @@ void dataLogs(vector<Logs>& logs, const string& archivo){
 
 //exportar el sorting más reciente al mismo archivo
 void saveLogs(const vector<Logs>& logs){
-    string archivo= "output608.txt";
+    string archivo= "out/output608.txt";
     ofstream file(archivo);
     for (int i=0; i<logs.size(); i++){
         file<<logs[i]<<endl;
@@ -84,13 +84,12 @@ int main(){
                 cin.ignore(1000, '\n');
             }
         }while (!opcionValida); //no se porque pero no le agarrab a esta parte de la logica, gemini me ayudo con lo de opcionValida
-        string nombreArchivo= (chooseArchivo== 1)?"log607-1.txt": "log607-2.txt";
+        string nombreArchivo= (chooseArchivo== 1)?"data/log607-1.txt": "data/log607-2.txt";
 
         vector<Logs> logsSortear;
         cout<<"Sorting: "<<nombreArchivo<<endl;
-        cout<<"Cantidad de logs: "<<logsSortear.size()<<endl;;
         dataLogs(logsSortear, nombreArchivo);
-
+        cout<<"Cantidad de logs: "<<logsSortear.size()<<endl;
         //segundo menu, algoritmos, lo que ya tenia
         int opcionAlgo= 0;
         opcionValida= false;
@@ -98,7 +97,7 @@ int main(){
             try{
                 cout<<"\nElige uno para ordenar los logs"<<endl;
                 cout<<"1. Swap Sort\n2. Bubble Sort\n3. Selection Sort\n4. Insertion Sort" << endl;
-                cout<<"5. Merge Sort\n6. Quick Sort\n7. Shell Sort\n9. Salir\n> ";
+                cout<<"5. Merge Sort\n6. Quick Sort\n7. Shell Sort\n9. Salir"<<endl;
                 cin>>opcionAlgo;
                 opcionValida= true;
             }catch(ios_base::failure& ex){
@@ -199,7 +198,7 @@ int main(){
             startIndex--;
         }
 
-        ofstream rangeFile("range607.txt");
+        ofstream rangeFile("out/range607.txt");
         int count= 0;
         int encontrado= false;
         cout<<"\nRegistros encontrados: "<<endl;
