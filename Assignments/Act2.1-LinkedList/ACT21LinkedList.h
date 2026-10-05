@@ -1,6 +1,7 @@
 #ifndef ACT21LINKEDLIST_H
 #define ACT21LINKEDLIST_H
-
+#include <iostream>  
+#include <stdexcept>
 #include "Node.h"
 
 template <typename T>
@@ -19,6 +20,7 @@ public:
     void updateData(T seek, T data);
     void updateAt(int index, T data);
     int findData(T data);
+    void print();
 
     T& operator[](int index);//gemini me ayudó a figurar cómo se hacía ponía la sobrecarga
     LinkedList<T>& operator=(const LinkedList<T>& other); //gemini me dijo, con razón, que le quitara el const final que le había puesto
@@ -58,7 +60,7 @@ void LinkedList<T>::insert(int index, T data) {
         aux->next = new Node<T>(data, aux->next);
         size++;
     } else {
-        throw out_of_range("la posición no existe en la lista");
+        throw std::out_of_range("la posición no existe en la lista");
     }
 
 }
@@ -140,13 +142,13 @@ void LinkedList<T>::updateData(T seek, T data){
         }
         aux = aux->next;
     }
-    throw out_of_range("dato no encontrado");
+    throw std::out_of_range("dato no encontrado");
 }
 
 template <typename T>
 void LinkedList<T>::updateAt(int index, T data) {
     if (index < 0 || index >= size || head == nullptr) {
-        throw out_of_range("index fuera de rango");
+        throw std::out_of_range("index fuera de rango");
     }
     Node<T>* aux = head;
     for (int i = 0; i < index; i++) {
@@ -172,7 +174,7 @@ int LinkedList<T>::findData(T data) {
 template <typename T>
 T& LinkedList<T>::operator[](int index) {
     if (index < 0 || index >= size || head== nullptr) {
-        throw out_of_range("posicion invalida");
+        throw std::out_of_range("posicion invalida");
     }
     
     Node<T>* aux = head;
@@ -206,6 +208,19 @@ LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& other) {
         aux= aux->next;
     }
     return *this;
+}
+
+template <typename T>
+void LinkedList<T>::print(){
+    Node<T>* aux= head;
+    while(aux != nullptr){
+        std::cout<<aux->data;
+        aux= aux->next;
+        if(aux != nullptr){
+            std::cout<<"-";
+        }
+    }
+    std::cout<<std::endl;
 }
 
 #endif
