@@ -1,0 +1,1 @@
+Todo bien con el código pensaría yo. Hoy no tuve ninguna corrección de Gemini en el archivo h, que creería que es lo más importante del código.
