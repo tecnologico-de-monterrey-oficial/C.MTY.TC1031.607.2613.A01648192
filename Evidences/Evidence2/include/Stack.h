@@ -10,8 +10,9 @@ class Stack{
     public:
         T pop();
         void push(T data);
-        T top();
-        int getSize();
+        T peek();
+        int size();
+        bool isEmpty();
 };
 
 template <typename T>
@@ -19,7 +20,7 @@ T Stack<T>::pop(){
     if(lista.getSize()>0){
         return lista.removeFirst();
     }
-    throw std::out_of_range("El Stack esta vacio.");
+    throw std::out_of_range("El Stack esta vacio. No se puede hacer pop.");
 }
 
 template <typename T>
@@ -28,7 +29,7 @@ void Stack<T>::push(T data){
 }
 
 template <typename T>
-T Stack<T>::top(){
+T Stack<T>::peek(){
     if(lista.getSize()>0){
         return lista.getData(0)->data;
     }
@@ -36,7 +37,12 @@ T Stack<T>::top(){
 }
 
 template <typename T>
-int Stack<T>::getSize(){
+int Stack<T>::size(){
     return lista.getSize();
+}
+
+template <typename T>
+bool Stack<T>::isEmpty(){
+    return lista.getSize()==0;
 }
 #endif
