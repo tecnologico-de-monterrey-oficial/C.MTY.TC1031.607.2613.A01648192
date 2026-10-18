@@ -1,4 +1,4 @@
-// partA.cpp
+// g++ partA.cpp -I ../include -o partA
 #include <iostream>
 #include <string>
 #include "LinkedList.h"
