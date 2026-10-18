@@ -1,5 +1,5 @@
-#ifndef DOUBLELINKEDLIST_H
-#define DOUBLELINKEDLIST_H
+#ifndef DOUBLYLINKEDLIST_H
+#define DOUBLYLINKEDLIST_H
 #include "Node.h"
 #include <stdexcept>
 #include <iostream>

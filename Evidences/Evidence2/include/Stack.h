@@ -12,7 +12,6 @@ class Stack{
         void push(T data);
         T top();
         int getSize();
-        bool isEmpty();
 };
 
 template <typename T>
@@ -39,10 +38,5 @@ T Stack<T>::top(){
 template <typename T>
 int Stack<T>::getSize(){
     return lista.getSize();
-}
-
-template <typename T>
-bool Stack<T>::isEmpty(){
-    return lista.getSize()==0;
 }
 #endif

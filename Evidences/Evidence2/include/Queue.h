@@ -12,7 +12,6 @@ class Queue{
         void push(T data);
         T front();
         int getSize();
-        bool isEmpty();
 };
 
 template <typename T>
@@ -39,10 +38,5 @@ T Queue<T>::front(){
 template <typename T>
 int Queue<T>::getSize(){
     return lista.getSize();
-}
-
-template <typename T>
-bool Queue<T>::isEmpty(){
-    return lista.getSize()==0;
 }
 #endif
