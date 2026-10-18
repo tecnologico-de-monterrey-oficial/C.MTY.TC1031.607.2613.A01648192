@@ -6,7 +6,7 @@ struct Node{
     T data;
     Node<T>* next;
 
-    Node(const T& value): data(value), next(nullptr) {}
+    Node(const T& value) : data(value), next(nullptr) {}
     Node(const T& value, Node<T>* nextNode) : data(value), next(std::move(nextNode)) {} 
 };
 
@@ -16,6 +16,6 @@ struct NodeD{
     NodeD<T>* next;
     NodeD<T>* prev;
 
-    NodeD(const T& value): data(value), next(nullptr), prev(nullptr) {}
-    NodeD(const T& value, NodeD<T>* nextNode): data(value), next(nextNode), prev(nullptr) {}
+    NodeD(const T& value) : data(value), next(nullptr), prev(nullptr) {}
+    NodeD(const T& value, NodeD<T>* nextNode) : data(value), next(nextNode), prev(nullptr) {}
 };

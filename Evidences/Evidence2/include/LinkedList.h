@@ -1,5 +1,5 @@
-#ifndef ACT21LINKEDLIST_H
-#define ACT21LINKEDLIST_H
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
 #include <iostream>  
 #include <stdexcept>
 #include "Node.h"
@@ -18,6 +18,7 @@ public:
     T removeFirst();
     int getSize();
     Node<T>* getData(int index);
+    void print(); // Agregado para imprimir la lista simple
 };
 
 template <typename T>
@@ -83,5 +84,15 @@ Node<T>* LinkedList<T>::getData(int index){
         aux= aux->next;
     }
     return aux;
+}
+
+template <typename T>
+void LinkedList<T>::print(){
+    Node<T>* aux= head;
+    while(aux!=nullptr){
+        std::cout<<aux->data<<" ";
+        aux= aux->next;
+    }
+    std::cout<<std::endl;
 }
 #endif

@@ -1,5 +1,6 @@
-#ifndef ACT23QUEUE_H
-#define ACT23QUEUE_H
+// ACT23Queue.h
+#ifndef QUEUE_H
+#define QUEUE_H
 #include "ACT21LinkedList.h"
 #include <stdexcept>
 
@@ -8,22 +9,23 @@ class Queue{
     private:
         LinkedList<T> lista;
     public:
-        T pop();
-        void push(T data);
+        T dequeue(); 
+        void enqueue(T data);
         T front();
-        int getSize();
+        int size();
+        bool isEmpty();
 };
 
 template <typename T>
-T Queue<T>::pop(){
+T Queue<T>::dequeue(){
     if(lista.getSize()>0){
         return lista.removeFirst();
     }
-    throw std::out_of_range("El Queue esta vacio.");
+    throw std::out_of_range("El Queue esta vacio. No se puede hacer dequeue.");
 }
 
 template <typename T>
-void Queue<T>::push(T data){
+void Queue<T>::enqueue(T data){
     lista.addLast(data);
 }
 
@@ -36,7 +38,12 @@ T Queue<T>::front(){
 }
 
 template <typename T>
-int Queue<T>::getSize(){
+int Queue<T>::size(){
     return lista.getSize();
+}
+
+template <typename T>
+bool Queue<T>::isEmpty(){
+    return lista.getSize()==0;
 }
 #endif

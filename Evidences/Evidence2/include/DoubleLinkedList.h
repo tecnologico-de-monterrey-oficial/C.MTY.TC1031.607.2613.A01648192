@@ -1,5 +1,5 @@
-#ifndef DOUBLYLINKEDLIST_H
-#define DOUBLYLINKEDLIST_H
+#ifndef DOUBLELINKEDLIST_H
+#define DOUBLELINKEDLIST_H
 #include "Node.h"
 #include <stdexcept>
 #include <iostream>
@@ -56,12 +56,32 @@ public:
     DoubleLinkedList(): head(nullptr), tail(nullptr), size(0) {}
     ~DoubleLinkedList(){ clear(); }
     
+    void addFirst(T data);
     void addLast(T data);
+    void insertAfter(NodeD<T>* node, T data);
+    void deleteNode(NodeD<T>* node);
     void clear();
     void sort(int& comparaciones, int& profMax);
     NodeD<T>* getHead() const;
     int getSize() const;
+    void printForward();
+    void printBackward();
 };
+
+template <typename T>
+void DoubleLinkedList<T>::addFirst(T data){
+    if(head==nullptr){
+        head= new NodeD<T>(data);
+        tail= head;
+        size++;
+    }else{
+        NodeD<T>* aux= new NodeD<T>(data);
+        aux->next= head;
+        head->prev= aux;
+        head= aux;
+        size++;
+    }
+}
 
 template <typename T>
 void DoubleLinkedList<T>::addLast(T data){
@@ -76,6 +96,52 @@ void DoubleLinkedList<T>::addLast(T data){
         tail= aux;
         size++;
     }
+}
+
+template <typename T>
+void DoubleLinkedList<T>::insertAfter(NodeD<T>* node, T data){
+    if(node==nullptr) return;
+    NodeD<T>* newNode= new NodeD<T>(data);
+    newNode->next= node->next;
+    newNode->prev= node;
+    node->next= newNode;
+    if(newNode->next!=nullptr){
+        newNode->next->prev= newNode;
+    }else{
+        tail= newNode;
+    }
+    size++;
+}
+
+template <typename T>
+void DoubleLinkedList<T>::deleteNode(NodeD<T>* node){
+    if(head==nullptr || node==nullptr) return;
+    if(head==node) head= node->next;
+    if(node->next!=nullptr) node->next->prev= node->prev;
+    if(node->prev!=nullptr) node->prev->next= node->next;
+    if(node==tail) tail= node->prev;
+    delete node;
+    size--;
+}
+
+template <typename T>
+void DoubleLinkedList<T>::printForward(){
+    NodeD<T>* aux= head;
+    while(aux!=nullptr){
+        cout<<aux->data<<" ";
+        aux= aux->next;
+    }
+    cout<<endl;
+}
+
+template <typename T>
+void DoubleLinkedList<T>::printBackward(){
+    NodeD<T>* aux= tail;
+    while(aux!=nullptr){
+        cout<<aux->data<<" ";
+        aux= aux->prev;
+    }
+    cout<<endl;
 }
 
 template <typename T>
