@@ -1,6 +1,6 @@
 #ifndef STACK_H
 #define STACK_H
-#include "ACT21LinkedList.h"
+#include "LinkedList.h"
 #include <stdexcept>
 
 template <typename T>

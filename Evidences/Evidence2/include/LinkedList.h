@@ -18,7 +18,7 @@ public:
     T removeFirst();
     int getSize();
     Node<T>* getData(int index);
-    void print(); // Agregado para imprimir la lista simple
+    void print(); 
 };
 
 template <typename T>

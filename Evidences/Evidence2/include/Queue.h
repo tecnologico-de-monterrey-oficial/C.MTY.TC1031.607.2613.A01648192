@@ -1,7 +1,6 @@
-// ACT23Queue.h
 #ifndef QUEUE_H
 #define QUEUE_H
-#include "ACT21LinkedList.h"
+#include "LinkedList.h"
 #include <stdexcept>
 
 template <typename T>
@@ -9,7 +8,7 @@ class Queue{
     private:
         LinkedList<T> lista;
     public:
-        T dequeue(); 
+        T dequeue();
         void enqueue(T data);
         T front();
         int size();
