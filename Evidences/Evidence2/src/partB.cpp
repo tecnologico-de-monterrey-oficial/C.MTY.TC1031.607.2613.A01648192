@@ -39,15 +39,19 @@ int main(){
     Queue<string> readBuffer;
     DoubleLinkedList<LogRecord> database;
     string filename;
+    ifstream file;
     
-    cout<<"Archivo a cargar (log607-1.txt o log607-2.txt): ";
-    cin>>filename;
-    filename= "../" + filename; 
-    ifstream file(filename);
-    
-    if(!file.is_open()){
-        cout<<"No se encontro el archivo."<<endl;
-        return 1;
+    while(true){
+        cout<<"Archivo a cargar (log607-1.txt o log607-2.txt): ";
+        cin>>filename;
+        string fullPath= "../" + filename; 
+        file.open(fullPath);
+        
+        if(file.is_open()){
+            break; // Si se abrió bien, rompemos el ciclo y continuamos
+        }else{
+            cout<<"No se encontro el archivo. Intenta de nuevo.\n"<<endl;
+        }
     }
 
     string line;
