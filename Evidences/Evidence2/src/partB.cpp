@@ -48,7 +48,7 @@ int main(){
         file.open(fullPath);
         
         if(file.is_open()){
-            break; // Si se abrió bien, rompemos el ciclo y continuamos
+            break;
         }else{
             cout<<"No se encontro el archivo. Intenta de nuevo.\n"<<endl;
         }
